@@ -1,0 +1,29 @@
+package selenium;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", 
+            "C:\\chromedriver.exe");
+
+        // Initialize WebDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Navigate to the desired URL
+        driver.get("http://www.chrome.com");
+
+        // Execute JavaScript and capture the returned message
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return 'Hello from javascript!';");
+
+        // Print the message to the console
+        System.out.println(message);
+
+        // Close the browser
+        driver.quit();
+    }
+}
